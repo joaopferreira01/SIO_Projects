@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Checkout Page</title>
+</head>
+
+<body>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                <div class="card-body p-4">
+                    <h2>Checkout</h2>
+                    <!-- Billing Address Form -->
+                    <form>
+                        <h3>Billing Information</h3>
+                        <div class="form-outline mb-4">
+                            <input type="text" id="firstName" class="form-control" placeholder="First Name" required />
+                        </div>
+                        <!-- ... (Other billing form fields) ... -->
+                        <!-- Payment Information -->
+                        <h3>Payment Information</h3>
+                        <div class="form-outline mb-4">
+                            <input type="text" id="creditCardNumber" class="form-control" placeholder="Credit Card Number" required />
+                        </div>
+                        <!-- ... (Other payment form fields) ... -->
+                        <!-- Order Summary -->
+                        <h3>Order Summary</h3>
+                        <!-- Add your order summary here, including product details and pricing -->
+                        <!-- Submit Button -->  
+                        <button type="submit" class="btn btn-primary">Complete Purchase</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commentary Section -->
+    <div class="row d-flex justify-content-center mt-4">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                <div class="card-body p-4">
+                    <h3>Commentary Session</h3>
+                    <form action="/submit_comment" method="POST">
+                        <input type="hidden" name="product_id" id="product_id" value=""> <!-- Include the post_id in the form -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name="comment_text" id="comment_text" class="form-control" placeholder="Type comment..." required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    </form>
+
+                    <!-- Sample Comment Cards -->
+                    {% for comment in comments %}
+                    <div class="card mb-4" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px;">
+                        <div class="card-body">
+                            <div class="d-flex flex-row align-items-center">
+                                <p class="small mb-0 ms-2">{{ comment[0] }}</p>
+                            </div>
+                            <p>{{ comment[1] }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    
+                    </div>
+
+                    <!-- ... (Other comment cards) ... -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const imageId = urlParams.get("index");
+
+            // Set the value of the hidden input field with the image identifier
+            document.getElementById("product_id").value = imageId;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,8 +1,14 @@
 ## Vulnerabilites used
 
+[CWE-79](https://cwe.mitre.org/data/definitions/79.html)
+
 [CWE-89](https://cwe.mitre.org/data/definitions/89.html)
 
+[CWE-209](https://cwe.mitre.org/data/definitions/209.html)
+
 [CWE-256](https://cwe.mitre.org/data/definitions/256.html)
+
+[CWE-284](https://cwe.mitre.org/data/definitions/284.html)
 
 [CWE-640](https://cwe.mitre.org/data/definitions/640.html)
 
@@ -39,5 +45,4 @@ python3 app_sec.py
 
 ## Authors
 João Ferreira, 103625
-Arthur, 102667
-Nuno Carvalho, 97783
+

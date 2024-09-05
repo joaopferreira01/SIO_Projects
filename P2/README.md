@@ -1,14 +1,25 @@
 ## Vulnerabilites used
 
-[CWE-89](https://cwe.mitre.org/data/definitions/89.html)
+Password Security Credentials (V2.1)
 
-[CWE-256](https://cwe.mitre.org/data/definitions/256.html)
+General Authenticator Requirements (V2.2)
+1. V2.2.1
+2. V2.2.2
 
-[CWE-640](https://cwe.mitre.org/data/definitions/640.html)
+Credential Recovery Requirements (V2.5)
+1. V2.5.4
+2. V2.5.5
 
-[CWE-756](https://cwe.mitre.org/data/definitions/756.html)
+Out of Band Verifier Requirements (V2.7.2)
 
-[CWE-613](https://cwe.mitre.org/data/definitions/613.html)
+Encrypted database Storage
+
+Session Termination (V3.3)
+1. V3.3.1
+
+File Upload (V12.1)
+1. 12.1.1
+2. 12.1.3
 
 ## How to run
 1. Create a virtual enviorment:
@@ -39,4 +50,3 @@ python3 app_sec.py
 
 ## Authors
 João Ferreira, 103625
-Arthur, 102667

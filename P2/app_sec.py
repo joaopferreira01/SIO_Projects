@@ -507,12 +507,11 @@ def submit_comment():
             user_id = get_current_user_id()
             print(f"User ID: {user_id}")
             res = c.execute(query, (get_current_user_id(),))
-            print("aqui ainda da")
             user_name = res.fetchone()[0]
-            print("aqui ja nao")
 
             file_path = None
             if file:
+                print("1")
                 file_name = secure_filename(file.filename)
                 file_path = os.path.join(UPLOAD_FOLDER, file_name)
                 file.save(file_path)
@@ -521,16 +520,23 @@ def submit_comment():
                 # Check if the user has previously uploaded files
                 c.execute("SELECT file_count FROM fileComments WHERE post_id=? AND user_name=?", (post_id, user_name))
                 result = c.fetchone()
+                
+                print("2")
+                
 
                 if result:
                     file_count = result[0]
+                    print("3")
                     
                     if file_count >= MAX_FILES_PER_USER:
+                        print("4")
                         flash(f"You have reached the maximum number of files ({MAX_FILES_PER_USER})", "error")
                         return redirect(url_for('checkOut', index=post_id))
                     
-                    
-                    file_count =+ 1
+                    print("5")
+                    # print("antes: "+file_count)
+                    file_count += 10
+                    # print("depois: "+file_count)
                     
                     # Update the file count for the existing record
                     c.execute("""
@@ -541,10 +547,12 @@ def submit_comment():
                     
                     # Update the file count and insert the new file
                     c.execute("""
-                    INSERT INTO fileComments (post_id, user_id, user_name, user_comment, file_name, file_content)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    """, (post_id, get_current_user_id(), user_name, comment_text, file_name, file_content))
+    INSERT INTO fileComments (post_id, user_id, user_name, user_comment, file_name, file_content, file_count)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (post_id, get_current_user_id(), user_name, comment_text, file_name, file_content, file_count))
+
                 else:
+                    print("6")
                     file_count = 1
                     # Insert new record with file info
                     c.execute("""

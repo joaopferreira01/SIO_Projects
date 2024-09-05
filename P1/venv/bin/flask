@@ -1,4 +1,4 @@
-#!/home/joaoferreira/Desktop/P1/1st-project-group_37-main/venv/bin/python3
+#!/home/joaoferreira/Desktop/SIO_Projects/P1/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

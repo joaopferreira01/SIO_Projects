@@ -2,3 +2,4 @@ Flask
 bcrypt
 werkzeug
 Flask-Session
+bleach

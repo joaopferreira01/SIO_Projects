@@ -13,6 +13,19 @@
                     <h2>Checkout</h2>
                     <!-- Your billing and payment forms here -->
 
+                    <!-- Display flash messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="alert alert-danger">
+                                {% for category, message in messages %}
+                                    {% if category == 'error' %}
+                                        <p>{{ message }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+
                     <!-- Commentary Section -->
                     <div class="row d-flex justify-content-center mt-4">
                         <div class="col-md-8 col-lg-6">
@@ -41,7 +54,6 @@
                                         <div class="card-body">
                                             <div class="d-flex flex-row align-items-center">
                                                 <p class="small mb-0 ms-2">{{ comment[0] }}</p>
-                                                <!-- Comentário do usuário -->
                                             </div>
                                             <p>{{ comment[1] }}</p> <!-- Comentário em texto -->
                                             {% if comment[2] %}
@@ -51,15 +63,6 @@
                                         </div>
                                     </div>
                                     {% endfor %}
-
-
-
-                                    <!-- Display error messages if any -->
-                                    {% if error_message %}
-                                    <div class="alert alert-danger">
-                                        {{ error_message }}
-                                    </div>
-                                    {% endif %}
                                 </div>
                             </div>
                         </div>
